@@ -12,9 +12,10 @@ def validate():
         print("validation failed")
         return redirect('/')
     print("validation success!")
-    return redirect('/create')
-
-@app.route("/create")
-def create_email():
     Email.create(request.form)
-    return redirect("/show/emails")
+    return redirect("/show")
+
+@app.route("/show/")
+def show():
+    emails = Email.get_all()
+    return render_template("show_emails.html", emails = emails)

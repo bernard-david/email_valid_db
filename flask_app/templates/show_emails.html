@@ -7,6 +7,17 @@
     <title>All Emails</title>
 </head>
 <body>
-    
+    <h1>All Emails</h1>
+    <p>The email address you entered is a VALID email address. Thank you!</p>
+    <table>
+        <thead>
+            <th>
+                <th>Email Addresses in Database:</th>
+            </th>
+        </thead>
+        {% for email in emails %}
+        <tr><td>{{email.email}}</td><td>{{email.created_at}}</td></tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
