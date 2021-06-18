@@ -23,8 +23,6 @@ class Email:
         emails = []
         for email in results:
             emails.append(cls(email))
-        print("#"*80)
-        print(emails)
         return emails
 
     @staticmethod
