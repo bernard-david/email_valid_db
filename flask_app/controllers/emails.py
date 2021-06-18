@@ -8,10 +8,10 @@ def input_email():
 
 @app.route("/validate_email", methods=["POST"])
 def validate():
-    if not Email.validate_user(request.form):
-        # we redirect to the template with the form.
+    if not Email.validate_email(request.form):
+        print("validation failed")
         return redirect('/')
-    # ... do other things
+    print("validation success!")
     return redirect('/create')
 
 @app.route("/create")

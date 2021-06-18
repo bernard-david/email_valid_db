@@ -13,8 +13,17 @@ class Email:
 
     @classmethod
     def create(cls, data):
-        query = "INSERT INTO emails (email, created_at, updated_at) VALUES (%(email)s, NOW(), NOW())"
+        query = "INSERT INTO emails (email, created_at, updated_at) VALUES (%(email)s, NOW(), NOW());"
         return connectToMySQL('email_validation').query_db( query, data )
+
+    @classmethod
+    def get_all(cls):
+        query = "SELECT * FROM emails;"
+        results = connectToMySQL('email_validation').query_db(query)
+        emails = []
+        for email in results:
+            emails.append(cls(email))
+        return emails
 
     @staticmethod
     def validate_email(data):
@@ -24,3 +33,5 @@ class Email:
             flash("Email is not valid!")
             is_valid = False
         return is_valid 
+
+    
